@@ -18,8 +18,6 @@ RUN npm install
 # React 앱의 빌드 결과물과 server 디렉토리의 나머지 파일들을 복사
 COPY --from=react-build /app/client/build ./client/build
 COPY server/ ./
-# 음악 파일 복사
-COPY public/audio /app/public/audio
 
 # 포트 노출
 EXPOSE 3001
