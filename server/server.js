@@ -19,8 +19,8 @@
 
     // 여기에 데이터베이스 설정을 추가하세요. (예: MongoDB, PostgreSQL 등)
     const pool = mariadb.createPool({
-        host: process.env.DATABASE_HOST, 
-        user: process.env.DATABASE_USER, 
+        host: process.env.DATABASE_HOST,
+        user: process.env.DATABASE_USER,
         password: process.env.DATABASE_PASSWORD,
         database: process.env.DATABASE_NAME,
         connectionLimit: 5
@@ -68,7 +68,7 @@
             `;
             const rows = await connection.query(query);
             connection.release();
-    
+
             res.json(rows); // 조회된 곡 목록을 JSON 형태로 응답
         } catch (err) {
         console.error(err);
@@ -122,7 +122,7 @@
                 const rankChange = prevRank - currentRank; // 순위 변동 계산 (이전 순위에서 현재 순위를 뺌)
                 await connection.query('UPDATE songs SET prevRank = ?, rankChange = ? WHERE id = ?', [currentRank, rankChange, song.id]);
             }));
-            
+
             connection.release();
             res.send({ success: true, message: 'Chart updated successfully.' });
         } catch (error) {
