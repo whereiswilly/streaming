@@ -40,7 +40,7 @@
             if (rows.length > 0) {
                 const s3Key = rows[0].file_path; // S3에 저장된 파일의 키
                 const signedUrl = s3.getSignedUrl('getObject', {
-                    Bucket: 'dzdzeqwreqwr-7',
+                    Bucket: 'musicstreamingbucket',
                     Key: s3Key,
                     Expires: 60 * 5 // URL이 5분 동안 유효함
                 });
